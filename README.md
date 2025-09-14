@@ -1,6 +1,6 @@
 # Next.js Website Template
 
-This is a demonstration website for a fake company.
+This is a demonstration website. Update it with your own content, design, and features.
 
 ## 🚀 Features
 
@@ -165,4 +165,4 @@ Built with:
 
 ---
 
-Made with ❤️ by @lyndipc
+Made with ❤️ by [@lyndipc](https://github.com/lyndipc)
