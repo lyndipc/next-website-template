@@ -1,6 +1,6 @@
 # Next.js Website Template
 
-This is a demonstration website. Update it with your own content, design, and features.
+This is a website template. Update it with your own content, design, and features.
 
 ## 🚀 Features
 
