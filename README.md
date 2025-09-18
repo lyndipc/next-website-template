@@ -1,168 +1,200 @@
 # Next.js Website Template
 
-This is a website template. Update it with your own content, design, and features.
+A production-ready Next.js website template with built-in rate limiting, Redis integration via Upstash, and Airtable contact forms.
 
-## 🚀 Features
+## ✨ Features
 
-- Modern, responsive design
-- Contact form integration
-- FAQ system
-- Rate limiting & security
-- SEO optimized
-- Mobile-first approach
+- **Next.js 15** with TypeScript and Turbopack
+- **Rate Limiting** using Redis and Upstash
+- **Contact Form** with Airtable integration
+- **Testing** setup with Jest
+- **ESLint** configuration
+- **Production-ready** deployment setup
 
-## 🛠️ Tech Stack
+## 🚀 Quick Start
 
-- **Framework:** Next.js 15 with TypeScript
-- **Styling:** Custom CSS with design system
-- **Database:** Airtable (for contact forms)
-- **Cache:** Upstash Redis (for rate limiting)
-- **Deployment:** Vercel (recommended)
+### Option 1: Use GitHub Template (Recommended)
+1. Click the **"Use this template"** button at the top of this repository
+2. Create your new repository
+3. Clone your new repository locally
 
-## 📋 Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-- Git
-
-### Installation
-
-1. Clone the repository
-
+### Option 2: Manual Setup
 ```bash
-git clone <your-repo-url>
-cd fake-company
+git clone https://github.com/yourusername/next-website-template.git my-website
+cd my-website
+rm -rf .git  # Remove the template's git history
+git init     # Initialize your own git repository
 ```
 
-2. Install dependencies
-
+### Install Dependencies
 ```bash
 npm install
 ```
 
-3. Set up environment variables
-
+### Environment Setup
+1. Copy the example environment file:
 ```bash
 cp .env.example .env.local
-# Edit .env.local with your actual values
 ```
 
-4. Run the development server
+2. Fill in your environment variables:
+```env
+# Upstash Redis (for rate limiting)
+UPSTASH_REDIS_REST_URL=your_upstash_url
+UPSTASH_REDIS_REST_TOKEN=your_upstash_token
 
+# Airtable (for contact forms)
+AIRTABLE_API_KEY=your_airtable_api_key
+AIRTABLE_BASE_ID=your_airtable_base_id
+AIRTABLE_TABLE_NAME=your_table_name
+
+# Next.js
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+### Run the Development Server
 ```bash
 npm run dev
 ```
 
-5. Open [https://fakecompany.abc](https://fakecompany.abc)
+Open [http://localhost:3000](http://localhost:3000) in your browser to see your website.
 
 ## ⚙️ Configuration
 
-### Site Settings
+### Customize Your Template
+Run the interactive customization script:
+```bash
+npm run customize
+```
 
-Edit `src/config/site.ts` to customize:
+This will help you:
+- Update package.json with your project details
+- Customize site metadata
+- Set up your branding
+- Configure default settings
 
-- Site name and description
-- Contact information
-- Features and content
-- Navigation menu
-- SEO settings
+### Manual Configuration
+Edit these files to customize your website:
 
-### Theme Customization
+- **Site metadata**: `app/layout.tsx`
+- **Homepage content**: `app/page.tsx`
+- **Styling**: `app/globals.css`
+- **Contact form**: `app/contact/page.tsx`
 
-Update `src/app/globals.css` to change:
+## 🛠️ Available Scripts
 
-- Brand colors (currently #ef4444)
-- Typography
-- Spacing
-- Component styles
-
-### Content Management
-
-Update content in these files:
-
-- `src/data/faq.ts` - FAQ questions and answers
-- `src/config/site.ts` - Main site content
-
-## 🔧 Available Scripts
-
-- `npm run dev` - Start development server
+- `npm run dev` - Start development server with Turbopack
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm test` - Run tests
+- `npm run test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run customize` - Interactive template customization
+
+## 🔧 Setting Up External Services
+
+### Upstash Redis (Rate Limiting)
+1. Sign up at [upstash.com](https://upstash.com)
+2. Create a new Redis database
+3. Copy the REST URL and Token to your `.env.local`
+
+### Airtable (Contact Forms)
+1. Sign up at [airtable.com](https://airtable.com)
+2. Create a new base for contact submissions
+3. Create a table with fields: Name, Email, Message, Date
+4. Get your API key from [airtable.com/create/tokens](https://airtable.com/create/tokens)
+5. Add your credentials to `.env.local`
+
+## 📁 Project Structure
+
+```
+├── app/                    # Next.js app directory
+│   ├── contact/           # Contact page with form
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Homepage
+├── components/            # Reusable React components
+├── lib/                   # Utility functions and configs
+│   ├── airtable.ts       # Airtable integration
+│   └── rate-limit.ts     # Rate limiting setup
+├── tests/                 # Test files
+├── scripts/              # Build and utility scripts
+│   └── customize.js      # Template customization
+└── public/               # Static assets
+```
 
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
-
 1. Push your code to GitHub
-2. Import your repository in [Vercel](https://vercel.com)
-3. Add environment variables in Vercel dashboard
+2. Connect your repository to [Vercel](https://vercel.com)
+3. Add your environment variables in Vercel dashboard
 4. Deploy!
 
 ### Other Platforms
+This template works with any platform that supports Next.js:
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
 
-- **Netlify:** Build command: `npm run build`
-- **Digital Ocean:** Use their App Platform
-- **AWS:** Deploy via Amplify or EC2
+## 🧪 Testing
 
-## 📊 Analytics
+Run the test suite:
+```bash
+npm run test                    # Run all tests
+npm run test:rate-limit        # Test rate limiting specifically
+npm run test:rate-limit:integration  # Integration tests
+```
 
-This site supports multiple analytics platforms:
+## 📝 Customization Examples
 
-- Google Analytics
-- Umami (privacy-focused)
-- Vercel Analytics
+### Changing the Color Scheme
+Edit `app/globals.css` and update the CSS custom properties:
+```css
+:root {
+  --primary-color: #your-color;
+  --secondary-color: #your-color;
+}
+```
 
-Add your tracking ID to the environment variables.
+### Adding New Pages
+Create new files in the `app/` directory following Next.js 13+ app router conventions.
 
-## 🛡️ Security Features
-
-- Rate limiting on API endpoints
-- Input validation and sanitization
-- CSRF protection
-- Security headers
-- Environment variable protection
-
-## 📞 Contact
-
-- **Website:** https://fakecompany.abc
-- **Email:** bob@fakecompany.abc
-- **Phone:** +1 (555) 123-4567
-
-## 🏢 Company Information
-
-**Fake Company, LLC**
-123 Main Street
-Your City, ST 12345
-United States
-
-Founded: 2025
-Industry: technology
+### Modifying Rate Limits
+Edit `lib/rate-limit.ts` to adjust rate limiting rules:
+```typescript
+export const rateLimiter = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(10, "60 s"), // 10 requests per minute
+});
+```
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 📝 License
+## 📄 License
 
-This project is licensed under the [MIT License](LICENSE.md).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- **Documentation**: Check this README first
+- **Issues**: [Open an issue](https://github.com/yourusername/next-website-template/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/next-website-template/discussions)
 
 ## 🙏 Acknowledgments
 
-Built with:
-
-- [Next.js](https://nextjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Upstash](https://upstash.com/)
-- [Airtable](https://airtable.com/)
+- Built with [Next.js](https://nextjs.org/)
+- Rate limiting by [Upstash](https://upstash.com)
+- Form handling with [Airtable](https://airtable.com)
 
 ---
 
-Made with ❤️ by [@lyndipc](https://github.com/lyndipc)
+**Happy coding!** 🎉 If this template helped you, consider giving it a ⭐ on GitHub.
